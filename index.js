@@ -13,10 +13,13 @@ app.use((request, response, next) => {
 	next()
 })
 
+app.use((err, request, response, next) => {
+	console.log(err)
+	response.status(500).send('something broke!')
+})
+
 app.get('/', (request, response) => {
-	response.json({
-		chance: request.chance
-	})
+	throw new Error('oops')
 })
 
 app.listen(port)
