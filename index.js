@@ -13,13 +13,13 @@ app.use((request, response, next) => {
 	next()
 })
 
+app.get('/', (request, response) => {
+	throw new Error('oops')
+})
+
 app.use((err, request, response, next) => {
 	console.log(err)
 	response.status(500).send('something broke!')
-})
-
-app.get('/', (request, response) => {
-	throw new Error('oops')
 })
 
 app.listen(port)
